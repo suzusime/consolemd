@@ -9,6 +9,14 @@ characters are stripped.
 import os, sys
 import click
 
+# Windows環境でもUTF-8で表示する
+# msys2で文字化けしないように
+if sys.platform.startswith("win"):
+    import _bootlocale
+    def mod_getpreferredencoding(do_setlocale=True):
+        return 'UTF-8'
+    _bootlocale.getpreferredencoding = mod_getpreferredencoding
+
 import logging
 from .logger import create_logger
 logger = create_logger('consolemd')
