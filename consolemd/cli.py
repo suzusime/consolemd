@@ -101,7 +101,7 @@ def cli(ctx, input, **kw):
 
     rename_proc( 'consolemd' )
 
-    md = input.read().decode('utf-8')
+    md = input.read()
 
     import consolemd
     renderer = consolemd.Renderer(style_name=kw['style'])
